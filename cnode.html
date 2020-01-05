@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>cnode</title>
+		<link rel="stylesheet" href="./static/style.css">
+	</head>
+	<body>
+		<div id="app" class="app">
+			<div class="head">
+				<a href="https://cnodejs.org/" target="_blank">cnodejs.org</a>
+			</div>
+			
+			<!-- 分类筛选 -->
+			<list-filter :cates='cates' v-model='tab'></list-filter>
+			
+			<!-- 加载中 -->
+			<list-loading :show='!loaded'></list-loading>
+			
+			<!-- 文章列表 -->
+			<div v-show='loaded' v-for='(ele,idx) in list'>
+				<list-item :article='ele'></list-item>
+			</div>
+			
+			<!-- 分页 -->
+			<list-page @prev='pageHaddle' @next='pageHaddle'></list-page>
+			
+		</div>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="./fetch.js"></script>
+	<script type="text/javascript" src="./components/list-item.js"></script>
+	<script type="text/javascript" src="./components/list-loading.js"></script>
+	<script type="text/javascript" src="./components/list-filter.js"></script>
+	<script type="text/javascript" src="./components/list-page.js"></script>
+	
+	<!-- app.js的引入，必须在各个组件之后 -->
+	<script type="text/javascript" src="./app.js"></script>
+		
+	
+</html>
